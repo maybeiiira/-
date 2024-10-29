@@ -1,15 +1,14 @@
+money_capital = 20000  # Подушка безопасности
 salary = 5000  # Ежемесячная зарплата
 spend = 6000  # Траты за первый месяц
-months = 10  # Количество месяцев, которое планируется протянуть без долгов
-increase = 0.03  # Ежемесячный рост цен
+increase = 0.05  # Ежемесячный рост цен
 
-required_savings = 0
+months = 0
 
-for _ in range(months):
-    required_savings += spend - salary
+while money_capital >= 0:
+    money_capital += salary - spend
     spend *= (1 + increase)
-
-required_savings = round(required_savings)
-# TODO Рассчитайте подушку безопасности, чтобы протянуть 10 месяцев без долгов
-
-print(f"Подушка безопасности, чтобы протянуть {months} месяцев без долгов:", required_savings)
+    months += 1
+# TODO Посчитайте количество  месяцев, которое можно протянуть без долгов
+months -= 1
+print("Количество месяцев, которое можно протянуть без долгов:", months)
